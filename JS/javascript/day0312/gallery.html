@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="next()">다음 동작</button>
+    <br>
+    <img src="../images/hero/image1.png" alt="">
+
+
+    <script>
+        let cnt = 1;
+
+        function next(){
+            console.log(n + "번 수행");
+            document.querySelector("img").src="../images/hero/image"+ cnt +".png";
+            cnt++;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        //문서 내의 배열로 존재하는 체크박스들의 체크 상태를, 대왕체크박스의 상태와 일치시켜보자(동기화)
+        function checkAll(){
+            let ch = document.getElementsByName("ch");
+            let king = document.getElementById("king");
+            
+            for(let i=0; i < ch.length; i++){
+                ch[i].checked = king.checked;
+            }
+        }
+    </script>
+</head>
+<body>
+    <div id="wrapper">
+        <pre>
+            <input type="checkbox" id="king" onclick="checkAll()">전체 체크
+
+            <!--
+                HTML 요소에 name 값을 중복정의하면, 추후 브라우저가 태그 요소들을 DOM화 시킬 때,
+                배열화 시킨다... 따라서 아래의 ch라는 이름으로 묶여진 체크박스들은, 결국 checkbox배열 돔이며
+                배열명은 ch가 된다.
+            -->
+            <input type="checkbox" name="ch">메일 제목
+            <input type="checkbox" name="ch">메일 제목
+            <input type="checkbox" name="ch">메일 제목
+            <input type="checkbox" name="ch">메일 제목
+            <input type="checkbox" name="ch">메일 제목
+            <input type="checkbox" name="ch">메일 제목
+            <input type="checkbox" name="ch">메일 제목
+            <input type="checkbox" name="ch">메일 제목
+            <input type="checkbox" name="ch">메일 제목
+            <input type="checkbox" name="ch">메일 제목
+        </pre>
+    </div>
+</body>
+</html>

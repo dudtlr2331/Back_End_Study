@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        #box1{
+            background-color: red;
+            width: 100px;
+            height: 100px;
+
+            /*인라인이면서 블럭*/
+            display: inline-block;
+        }
+
+        #box2{
+            background-color: blue;
+            width: 100px;
+            height: 100px;
+        }
+    </style>
+</head>
+<body>
+
+    <!--
+        모든 태그 요소는 둘 중 하나로 분류된다.
+        1) 인라인
+            - 딱 컨텐츠 만큼만 늘어남, 크기 조절 불가, padding 좌우는 가능하나, padding 위 아래는 불 안정...
+            - 다른 요소와 공존이 가능(수평선 상...)
+            ex) a태그
+
+        2) 블럭
+            - 화면의 끝까지 늘어나버림, 공존이 불가능, 크기, 패딩, 마진이 다 적용 가능하다.
+    -->
+
+    <div id="box1">red</div>
+    <div id="box2">blue</div>
+    
+</body>
+</html>

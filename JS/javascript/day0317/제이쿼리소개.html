@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        //제이쿼리 코드 작성...
+        //addEventListener("load", 콜백함수);
+        $(function(){
+            /* 제이쿼리 문법은 CSS와 동일하게, 누구를 어떻게 처리할 지를 서술하는
+                문법 형식을 갖는다.
+                $(선택자).함수명()*/
+                $("p").click(function(){
+                    /* p요소의 스타일 중 display속성을 none로 줘야하지만
+                    제이쿼리는 .style객체를 직접 사용하지 않고 더 단순한 함수로
+                    기능을 지원한다... 직관성도 부여 
+                    아래에서의 this는 클릭 이벤트를 일으킨 주체를 말하므로 바로
+                    p 스스로를 말하기 때문에 대명사인 this를 사용한다.*/
+                    $(this).hide(); // style.display="none";
+                });
+        });
+    </script>
+</head>
+<body>
+    <p>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+    </p>
+</body>
+</html>

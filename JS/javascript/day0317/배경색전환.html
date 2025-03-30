@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+
+        //이벤트 핸들러 처리를 프로그래밍적으로 구현할 때는 아래와 같이 window 객체가 보유한addEventListener()메서드를 이용할 수 있다.
+        /* 이벤트 중 load 이벤트란? 브라우저가 문서의 제일 마지막 라인까지 읽어들임을 완료한 시점에
+        발생하는 이벤트, 이 시점에는 이미 모든 태그 요소에 대한 DOM이 메모리에 올라와 있으므로,
+        js에서 제어가 가능하다
+        아래의 코드에서 load 이벤트가 발생하면 우리가 매개변수로 넘긴 이름 없는 익명함수를 호출해준다.
+        이렇게 넘겨진 함수를 콜백 함수라한다. 익명함수를 굳이 사용한 이유는? 재사용성이 없는 함수이므로.
+        즉 load라는 이벤트에서만 사용할 1회성의 함수이므로 */
+        window.addEventListener("load", function(){
+            console.log("load 완료, 이 시점부터 문서의 모든 DOM 사용 가능");
+            let bt = document.querySelector("button");
+            let color = true;
+            
+            bt.addEventListener("click", function(){
+                //배경색을 기존의 색상과는 반대로 뒤집어서 적용해보자
+
+                document.body.style.backgroundColor = color ? "black" : "white";
+
+                // if (color) {
+                //     document.body.style.backgroundColor="black";
+                // } else {
+                //     document.body.style.backgroundColor="white";
+                // }
+
+                color = !color;
+            }); //프로그래밍적으로 버튼에 이벤트 핸들러 연결
+            
+
+        });
+
+        // document.querySelector("button")
+    </script>
+</head>
+<body>
+    
+    <button >스위치</button>
+
+</body>
+</html>
