@@ -86,7 +86,7 @@ public class TravelDao {
             conn.close();
 
         } catch (SQLException e) {
-            System.out.println("[selectTravelAll 에러] " + e.getMessage());
+            System.out.println("[getByDistrict 에러] " + e.getMessage());
         }
 
         return list;
@@ -122,7 +122,7 @@ public class TravelDao {
             conn.close();
 
         } catch (SQLException e) {
-            System.out.println("[selectTravelAll 에러] " + e.getMessage());
+            System.out.println("[searchByTitle 에러] " + e.getMessage());
         }
 
         return list;
