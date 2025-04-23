@@ -2,15 +2,9 @@
 	pageEncoding="UTF-8"%>
 
 <%@ page import="org.example.model1.BoardTO" %>
-<%@ page import="org.example.model1.BoardDAO" %>
 
 <%
-	BoardTO to = new BoardTO();
-	to.setSeq( request.getParameter( "seq" ) );
-
-	BoardDAO dao = new BoardDAO();
-	to = dao.boardDelete( to );
-
+	BoardTO to = (BoardTO) request.getAttribute("to");
 	String seq = to.getSeq();
 	String subject = to.getSubject();
 	String writer = to.getWriter();
@@ -23,7 +17,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <title>Insert title here</title>
-<link rel="stylesheet" type="text/css" href="../../css/board.css">
+<link rel="stylesheet" type="text/css" href="./css/board.css">
 <script type="text/javascript">
 	window.onload = function() {
 		document.getElementById( 'dbtn' ).onclick = function() {
@@ -46,9 +40,10 @@
 	<p>HOME &gt; 게시판 &gt; <strong>게시판</strong></p>
 </div>
 <div class="con_txt">
-	<form action="board_delete1_ok.jsp" method="post" name="dfrm">
+	<form action="./controller" method="post" name="dfrm">
+		<input type="hidden" name="path" value="delete_ok" />
 		<input type="hidden" name="seq" value="<%=seq%>" />
-		<div class="contents_sub">	
+		<div class="contents_sub">
 			<!--게시판-->
 			<div class="board_write">
 				<table>
@@ -69,8 +64,8 @@
 			
 			<div class="btn_area">
 				<div class="align_left">
-					<input type="button" value="목록" class="btn_list btn_txt02" style="cursor: pointer;" onclick="location.href='board_list1.jsp'" />
-					<input type="button" value="보기" class="btn_list btn_txt02" style="cursor: pointer;" onclick="location.href='board_view1.jsp?seq=<%=seq %>'" />
+					<input type="button" value="목록" class="btn_list btn_txt02" style="cursor: pointer;" onclick="location.href='./controller?path=list'" />
+					<input type="button" value="보기" class="btn_list btn_txt02" style="cursor: pointer;" onclick="location.href='./controller?path=view&seq=<%=seq %>'" />
 				</div>
 				<div class="align_right">
 					<input type="button" id="dbtn" value="삭제" class="btn_write btn_txt01" style="cursor: pointer;" />

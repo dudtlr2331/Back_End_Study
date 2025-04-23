@@ -2,14 +2,8 @@
 	pageEncoding="UTF-8"%>
 
 <%@ page import="org.example.model1.BoardTO" %>
-<%@ page import="org.example.model1.BoardDAO" %>
-
 <%
-	BoardTO to = new BoardTO();
-	to.setSeq( request.getParameter( "seq" ) );
-
-	BoardDAO dao = new BoardDAO();
-	to = dao.boardModify( to );
+	BoardTO to = (BoardTO) request.getAttribute("to");
 
 	String seq = to.getSeq();
 	String subject = to.getSubject();
@@ -55,9 +49,10 @@
 	<p>HOME &gt; 게시판 &gt; <strong>게시판</strong></p>
 </div>
 <div class="con_txt">
-	<form action="board_modify1_ok.jsp" method="post" name="mfrm">
+	<form action="./controller" method="post" name="mfrm">
+		<input type="hidden" name="path" value="modify_ok" />
 		<input type="hidden" name="seq" value="<%=seq %>" />
-		<div class="contents_sub">	
+		<div class="contents_sub">
 			<!--게시판-->
 			<div class="board_write">
 				<table>
@@ -86,8 +81,8 @@
 			
 			<div class="btn_area">
 				<div class="align_left">
-					<input type="button" value="목록" class="btn_list btn_txt02" style="cursor: pointer;" onclick="location.href='board_list1.jsp'" />
-					<input type="button" value="보기" class="btn_list btn_txt02" style="cursor: pointer;" onclick="location.href='board_view1.jsp?seq=<%=seq %>'" />
+					<input type="button" value="목록" class="btn_list btn_txt02" style="cursor: pointer;" onclick="location.href='./controller?path=list'" />
+					<input type="button" value="보기" class="btn_list btn_txt02" style="cursor: pointer;" onclick="location.href='./controller?path=view&seq=<%=seq %>'" />
 				</div>
 				<div class="align_right">
 					<input type="button" id="mbtn" value="수정" class="btn_write btn_txt01" style="cursor: pointer;" />
