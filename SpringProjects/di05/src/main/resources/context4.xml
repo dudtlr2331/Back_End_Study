@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="to" class="org.example.di.model3.BoardListTO" scope="prototype">
+        <property name="userList">
+            <list>
+                <value>홍길동</value>
+                <value>장길산</value>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="listTO2" class="org.example.di.model4.BoardListTO" scope="prototype">
+        <property name="boardLists">
+            <list>
+                <bean class="org.example.di.model4.BoardTO" scope="prototype">
+                    <property name="seq" value="1" />
+                    <property name="subject" value="제목 1" />
+                </bean>
+                <bean class="org.example.di.model4.BoardTO" scope="prototype">
+                    <property name="seq" value="2" />
+                    <property name="subject" value="제목 2" />
+                </bean>
+            </list>
+        </property>
+    </bean>
+
+</beans>

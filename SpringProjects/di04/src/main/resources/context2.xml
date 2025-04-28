@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- 디폴트 생성자 -->
+    <bean id="writeAction1" class="org.example.di.model2.WriteAction" scope="prototype" />
+
+    <!-- 오버로딩된 생성자
+        WriteActon writeAction2 = new WriteAction( new BoardTO() )
+     -->
+    <bean id="writeAction2" class="org.example.di.model2.WriteAction" scope="prototype">
+        <constructor-arg>
+            <bean class="org.example.di.model2.BoardTO" scope="prototype"/>
+        </constructor-arg>
+    </bean>
+
+    <!-- 오버로딩된 생성자
+        BoardTO to = new BoadTO()
+        WriteActon writeAction2 = new WriteAction( to )
+     -->
+    <bean id="to" class="org.example.di.model2.BoardTO" />
+    <bean id="writeAction3" class="org.example.di.model2.WriteAction">
+        <constructor-arg>
+            <ref bean="to" />
+        </constructor-arg>
+    </bean>
+
+
+
+
+</beans>

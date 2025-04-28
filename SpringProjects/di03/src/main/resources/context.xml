@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- 객체 생성 시점
+        instance / class(static)
+    -->
+
+    <!--
+        scope="singleton" == class  => 미리 객체 선언
+        singleton 기본 값임
+    -->
+    <bean id="helloBean21" class="org.example.di.model.HelloBean" scope="singleton"/>
+    <bean id="helloBean22" class="org.example.di.model.HelloBean" scope="singleton"/>
+
+    <bean id="helloBean31" class="org.example.di.model.HelloBean"/>
+
+    <!--
+        scope="prototype" == instance => 사용 시점에서 객체 선언
+        객체 생성 시점이 다르다
+    -->
+    <bean id="helloBean11" class="org.example.di.model.HelloBean" scope="prototype"/>
+    <bean id="helloBean12" class="org.example.di.model.HelloBean" scope="prototype"/>
+
+
+</beans>
