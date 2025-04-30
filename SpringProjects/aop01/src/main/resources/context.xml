@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- AOP -->
+    <bean id="basicAdvice1" class="org.example.aop.advice.BasicAdvice1"/>
+    <bean id="basicAdvice2" class="org.example.aop.advice.BasicAdvice2"/>
+
+    <bean id="pointcutAdvice1" class="org.springframework.aop.support.DefaultPointcutAdvisor">
+        <!-- advice -->
+        <property name="advice" ref="basicAdvice1"/>
+        <!-- point 설정 -->
+        <property name="pointcut">
+            <bean class="org.springframework.aop.support.JdkRegexpMethodPointcut">
+                <property name="pattern" value=".*execute"/>
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="pointcutAdvice2" class="org.springframework.aop.support.DefaultPointcutAdvisor">
+        <!-- advice -->
+        <property name="advice" ref="basicAdvice2"/>
+        <!-- point 설정 -->
+        <property name="pointcut">
+            <bean class="org.springframework.aop.support.JdkRegexpMethodPointcut">
+                <property name="pattern" value=".*execute"/>
+            </bean>
+        </property>
+    </bean>
+
+    <!--  Core Concern -->
+    <bean id="writeAction" class="org.example.aop.model.WriteAction">
+        <property name="writer">
+            <value>홍길동</value>
+        </property>
+    </bean>
+
+    <!-- 적용 -->
+    <bean name="proxy1" class="org.springframework.aop.framework.ProxyFactoryBean">
+        <property name="target" ref="writeAction"/>
+        <property name="interceptorNames">
+            <list>
+                <value>pointcutAdvice1</value>
+                <value>pointcutAdvice2</value>
+            </list>
+        </property>
+    </bean>
+
+</beans>
