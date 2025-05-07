@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: boot02
+  datasource:
+    driver-class-name: "com.mysql.cj.jdbc.Driver"
+    url: "jdbc:mysql://localhost:3306/sample"
+    username: root
+    password: victory123
+
+
+
+
+# ??? ?? ??
+my:
+  name: Kevin
+  fullname: Kevin Park
+
+# ?????? ?? ??
+
