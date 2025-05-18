@@ -18,8 +18,7 @@ import java.util.ArrayList;
 public class PdsController {
 
 
-	@Autowired
-	private BoardDAO dao;
+	@Autowired private BoardDAO dao;
 
 	@RequestMapping( "/list.do" )
 	public ModelAndView list(HttpServletRequest request) {
