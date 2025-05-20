@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#btn').on('click', function () {
+                $.ajax({
+                    url: './request',
+                    type: 'delete',
+                    dataType: 'text',
+                    success: function (textData) {
+                        console.log(textData)
+                    },
+                    error: function (err) {
+                        console.log('[에러] ' + err.responseText);
+                    }
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+
+<button id="btn" >요청하기</button>
+
+<br/><hr/><br/>
+
+<div id="result"></div>
+
+</body>
+</html>
