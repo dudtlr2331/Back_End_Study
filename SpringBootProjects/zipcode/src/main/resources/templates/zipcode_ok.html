@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+zipcode_ok.html
+<br/><hr/>
+
+<table border="1" cellspacing="0">
+    <tr th:each="list : ${lists}">
+        <td th:text="${list.getZipcode()}"></td>
+        <td th:text="${list.getSido()()}"></td>
+        <td th:text="${list.getGugun()}"></td>
+        <td th:text="${list.getDong()}"></td>
+        <td th:text="${list.getRi()}"></td>
+        <td th:text="${list.getBunji()}"></td>
+    </tr>
+</table>
+
+</body>
+</html>
