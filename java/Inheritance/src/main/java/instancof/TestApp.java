@@ -4,6 +4,9 @@ class Person1{
     String name;
     int age;
 
+    // 기본생성자는 자동으로 호출 해주는데
+    // 매개변수가 있는 생성자는 자식 클래스 생성자에서 부모 클래스 생성자를 호출해줘야한다.
+
     public Person1(int age, String name) {
         this.age = age;
         this.name = name;

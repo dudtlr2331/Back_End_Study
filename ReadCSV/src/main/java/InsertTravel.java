@@ -12,8 +12,8 @@ import java.sql.SQLException;
 public class InsertTravel {
     public static void main(String[] args) {
         String url = "jdbc:mysql://localhost:3306/travel_db";
-        String user = "team1";
-        String password = "123456";
+        String user = "root";
+        String password = "victory123";
 
         Connection conn = null;
         PreparedStatement pstmt = null;
@@ -23,7 +23,8 @@ public class InsertTravel {
             Class.forName("com.mysql.cj.jdbc.Driver");
             conn = DriverManager.getConnection(url, user, password);
 
-            String sql = "INSERT INTO travel (district, title, description, address, phone) VALUES (?, ?, ?, ?, ?)";
+            // 좌표 컬럼 포함한 INSERT (null로 설정)
+            String sql = "INSERT INTO travel (district, title, description, address, phone, latitude, longitude) VALUES (?, ?, ?, ?, ?, ?, ?)";
             pstmt = conn.prepareStatement(sql);
 
             reader = new CSVReaderBuilder(new FileReader("./travel.csv"))
@@ -47,8 +48,13 @@ public class InsertTravel {
                 pstmt.setString(4, address);
                 pstmt.setString(5, phone);
 
+                // 좌표는 기본값으로 null
+                pstmt.setNull(6, java.sql.Types.DOUBLE); // latitude
+                pstmt.setNull(7, java.sql.Types.DOUBLE); // longitude
+
                 pstmt.executeUpdate();
             }
+
             System.out.println("데이터 삽입 완료!");
 
         } catch (IOException | CsvValidationException | ClassNotFoundException | SQLException e) {
