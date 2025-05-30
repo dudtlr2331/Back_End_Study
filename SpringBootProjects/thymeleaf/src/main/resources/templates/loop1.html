@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+loop1.html
+<br/><hr/>
+
+<table border="1" cellspacing="0">
+    <tr th:each="mem : ${lists}">
+        <td th:text="${mem.id}"></td>
+        <td th:text="${mem.name}"></td>
+        <td th:text="${mem.getAge()}"></td>
+    </tr>
+</table>
+
+<table border="1" cellspacing="0">
+    <tr th:each="num : ${numbers}">
+        <td th:text="${num}"></td>
+    </tr>
+</table>
+
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+condition1.html
+<br/><hr/>
+
+<div th:with="data=${''}">
+    <h3 th:if="${data == ''}" th:text="'값 없음'"></h3>
+</div>
+
+<div th:with="data=${'11'}">
+    <h3 th:if="${data == ''}" th:text="'값 없음'"></h3>
+    <h3 th:unless="${data == ''}" th:text="'값 있음'"></h3>
+</div>
+
+<!--<div th:switch="10">-->
+<div th:with="data=${'40'}" th:switch="${data}">
+    <h3 th:case="10">10살</h3>
+    <h3 th:case="20">20살</h3>
+    <h3 th:case="30">30살</h3>
+    <h3 th:case="*">기타</h3>
+</div>
+
+<div th:with="data=${'값'}">
+    <div th:text="${data == '' ? '값 없음' : '값 있음'}"></div>
+    <div th:text="${data eq '' ? '값 없음' : '값 있음'}"></div>
+</div>
+
+</body>
+</html>
