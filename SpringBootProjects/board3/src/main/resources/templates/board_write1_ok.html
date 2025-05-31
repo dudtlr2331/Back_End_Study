@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="./css/board.css">
+</head>
+<body>
+
+<script type='text/javascript'>
+    const flag = [[${flag}]];
+
+    if( flag == 0 ) {
+        alert( '글쓰기 성공' );
+        location.href='./list.do';
+    } else if( flag == 1 ) {
+        alert( '글쓰기 실패' );
+        history.back();
+    }
+</script>
+
+</body>
+</html>

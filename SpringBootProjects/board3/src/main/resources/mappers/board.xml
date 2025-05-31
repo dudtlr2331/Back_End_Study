@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.example.board.mapper.BoardMapper">
+    <insert id="write_ok" parameterType="to">
+        insert into board1
+        values ( 0, #{subject}, #{writer}, #{mail}, md5( #{password} ), #{content}, 0, #{wip}, now() )
+    </insert>
+
+    <select id="list" resultType="to">
+        select seq, subject, writer, wdate, hit, datediff(now(), wdate) as wgap
+        from board1
+        order by seq desc
+    </select>
+
+    <select id="view" parameterType="to" resultType="to">
+        select seq, subject, writer, mail, wip, wdate, hit, content from board1
+        where seq=#{seq}
+    </select>
+
+    <update id="view_hit" parameterType="to">
+        update board1 set hit = hit + 1
+        where seq=#{seq}
+    </update>
+
+    <select id="delete" parameterType="to" resultType="to">
+        select seq, subject, writer from board1
+        where seq=#{seq}
+    </select>
+
+    <delete id="delete_ok" parameterType="to">
+        delete from board1
+        where seq = #{seq}
+        and password = md5(#{password})
+    </delete>
+
+    <select id="modify" parameterType="to" resultType="to">
+        select seq, subject, writer, mail, content
+        from board1
+        where seq = #{seq}
+    </select>
+
+    <update id="modify_ok" parameterType="to">
+        update board1 set subject = #{subject}, mail = #{mail}, content = #{content}
+        where seq = #{seq}
+        and password = md5(#{password})
+    </update>
+</mapper>
