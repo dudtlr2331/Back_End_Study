@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script type='text/javascript'>
+    const flag = [[${flag}]];
+
+    if( flag == 0 ) {
+        alert( '글쓰기 성공' );
+        location.href='./list.do';
+    } else if( flag == 1 ) {
+        alert( '글쓰기 실패' );
+        history.back();
+    }
+</script>
+
+</body>
+</html>
