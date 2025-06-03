@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mybatis">
+    <select id="select" resultType="String">
+        select version() as version
+    </select>
+
+    <select id="selectone" resultType="org.example.mybatis03.model.DeptTO">
+        select deptno, dname, loc
+        from dept
+        where deptno = 10;
+    </select>
+
+    <select id="selectlist" resultType="org.example.mybatis03.model.DeptTO">
+        select deptno, dname, loc
+        from dept
+    </select>
+
+    <select id="selectone1" parameterType="org.example.mybatis03.model.DeptTO" resultType="org.example.mybatis03.model.DeptTO">
+        select deptno, dname, loc
+        from dept
+        where deptno = #{deptno} and dname = #{dname}
+    </select>
+</mapper>
