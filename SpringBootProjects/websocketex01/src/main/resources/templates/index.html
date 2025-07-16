@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        window.onload = function (){
+            let ws = null;
+
+            document.getElementById('btn1').onclick = function (){
+                ws = new WebSocket("ws://localhost:8080/ws/echo");
+
+                // 이벤트 처리
+                ws.onopen = function (){
+                    console.log("open");
+                };
+
+                ws.onmessage = function (){
+                    console.log(event.data, '\n');
+                };
+
+                ws.onclose = function (){
+                    console.log("close");
+                };
+
+                ws.onerror = function (){
+                    console.error("error");
+                };
+            };
+
+            document.getElementById('btn2').onclick = function (){
+                if (ws != null){
+                    ws.close();
+                } else {
+                    alert('연결이 없음');
+                }
+            };
+
+            document.getElementById('btn3').onclick = function (){
+                if (ws != null){
+                    console.log('ws : ', ws.readyState);
+                    // 0 : connection
+                    // 1 : open
+                    // 2 : closing
+                    // 3 : closed
+
+                    if(ws.readyState !== 1){
+                        return;
+                    }
+                    ws.send("Hello WebSocket!!");
+
+                } else {
+                    alert('연결이 없음');
+                }
+            };
+        };
+    </script>
+</head>
+<body>
+
+<button id="btn1">연결시작</button>
+<button id="btn2">연결종료</button>
+<button id="btn3">연결종료</button>
+</body>
+</html>

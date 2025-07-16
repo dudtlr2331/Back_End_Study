@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        window.onload = function (){
+            let ws = null;
+
+            document.getElementById('btn1').onclick = function (){
+                ws = new WebSocket("ws://localhost:8080/ws/echo");
+
+                // 이벤트 처리
+                ws.onopen = function (){
+                    document.getElementById('result').innerHTML += 'open<br/>';
+                };
+
+                ws.onmessage = function (event){
+                    document.getElementById('result').innerHTML += event.data + '<br/>';
+                };
+
+                ws.onclose = function (){
+                    document.getElementById('result').innerHTML += 'close<br/>';
+                };
+
+                ws.onerror = function (){
+                    document.getElementById('result').innerHTML += 'error<br/>';
+                };
+            };
+
+            document.getElementById('btn2').onclick = function (){
+                if (ws != null){
+                    ws.close();
+                } else {
+                    alert('연결이 없음');
+                }
+            };
+
+            document.getElementById('btn3').onclick = function (){
+                if (ws != null){
+                    console.log('ws : ', ws.readyState);
+                    // 0 : connection
+                    // 1 : open
+                    // 2 : closing
+                    // 3 : closed
+
+                    if(ws.readyState !== 1){
+                        return;
+                    }
+
+                    ws.send( document.getElementById('msg').value );
+
+                } else {
+                    alert('연결이 없음');
+                }
+            };
+        };
+    </script>
+</head>
+<body>
+
+<button id="btn1">연결시작</button>
+<button id="btn2">연결종료</button>
+
+<br/>
+
+<input type="text" id="msg" size="30" placeholder="메시지를 입력해 주세요."/>
+<button id="btn3">메세지 보내기</button>
+
+<br/><hr/><br/>
+
+<div id="result"></div>
+
+</body>
+</html>
