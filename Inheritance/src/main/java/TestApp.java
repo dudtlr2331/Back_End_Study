@@ -1,32 +1,54 @@
-class Cal{
-    public int sum(int a, int b){
-        return a + b;
+class Animal{
+    void eat(){
+        System.out.println("동물이 먹습니다.");
+    }
+    void sleep(){
+        System.out.println("동물이 잡니다.");
     }
 }
 
-class Cal3 extends Cal{
-    public int minus(int a, int b){
-        return a - b;
+class Lion extends Animal{
+    void roar(){
+        System.out.println("사자가 으르렁거립니다.");
+    }
+
+    @Override
+        void eat() {
+            System.out.println("사자가 고기를 먹습니다.");
     }
 }
 
+class Elephant extends Animal{
+    void sprayWater(){
+        System.out.println("코끼리가 물을 뿌립니다.");
+    }
+
+    @Override
+    void eat() {
+        System.out.println("코끼리가 물을 마십니다.");;
+    }
+}
+
+class Penguin extends Animal{
+    void swim(){
+        System.out.println("펭귄이 수영합니다.");
+    }
+
+    @Override
+    void eat() {
+        System.out.println("펭귄이 생선을 먹습니다.");
+    }
+}
 
 public class TestApp {
     public static void main(String[] args) {
-//        Cal cal = new Cal();
-//        System.out.println(cal.sum(1, 2));
-        Cal3 cal3 = new Cal3();
-        System.out.println(cal3.sum(1, 2));
-        System.out.println(cal3.minus(2, 1));
-    }
-}
+        Lion lion = new Lion();
+        lion.eat();
+        lion.sleep();
+        lion.roar();
 
-class Cal2 {
-    public int sum(int a, int b){
-        return a + b;
-    }
-
-    public int minus(int a, int b){
-        return a - b;
+        Penguin penguin = new Penguin();
+        penguin.eat();
+        penguin.sleep();
     }
 }

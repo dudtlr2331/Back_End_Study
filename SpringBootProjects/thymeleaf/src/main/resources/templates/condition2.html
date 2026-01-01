@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+condition2.html
+<br/><hr/>
+
+<div th:if="${mem1.age} == 25" th:text="'25살'">True</div>
+<div th:if="${mem1.age == 25}" th:text="'25살'">True</div>
+
+<div th:if="${mem1.getAge()} == 25" th:text="'25살'">True</div>
+<div th:if="${mem1.getAge() == 25}" th:text="'25살'">True</div>
+
+<div th:switch="${mem2.name}">
+    <div th:case="'홍길동">이름이 홍길동</div>
+    <div th:case="'박문수">이름이 박문수</div>
+</div>
+
+</body>
+</html>

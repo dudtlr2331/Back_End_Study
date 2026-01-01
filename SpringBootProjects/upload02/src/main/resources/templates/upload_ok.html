@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+upload_ok.html
+<br/><hr/>
+
+<div>파일 이름 : <span th:text="${fileName}"></span></div>
+
+
+<!--<img src="./upload/image1.jpg"/>-->
+<!--<img th:src="@{'./upload/image1.jpg'}"/><br/>-->
+<img th:src="@{'./upload/' + ${fileName}}"><br/>
+
+</body>
+</html>

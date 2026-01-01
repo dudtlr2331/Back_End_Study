@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+view3.html
+<br/><hr/>
+
+<div>
+    <p>id : <span th:text="${to.id}"></span></p>
+    <p>name : <span th:text="${to.name}"></span></p>
+    <p>age : <span th:text="${to.age}"></span></p>
+</div>
+
+<div th:object="${to}">
+    <p>id : <span th:text="*{id}"></span></p>
+    <p>name : <span th:text="*{name}"></span></p>
+    <p>age : <span th:text="*{age}"></span></p>
+</div>
+
+</body>
+</html>

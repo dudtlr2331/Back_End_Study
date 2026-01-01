@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+with.html
+<br/><hr/>
+
+<div th:with="data=${'값2'}">
+    <div th:width="data=${'값1'}">
+        <div>data1 : <span th:text="${data}"></span></div>
+    </div>
+    <div>data2 : <span th:text="${data}"></span></div>
+</div>
+
+<div th:with="data1=${'값1'}, data2=${'값2'}">
+    <div>data1 : <span th:text="${data1}"></span></div>
+    <div>data2 : <span th:text="${data2}"></span></div>
+</div>
+
+</body>
+</html>

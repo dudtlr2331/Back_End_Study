@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.example.album.mapper.AlbumCommentMapper">
+    <insert id="write_ok" parameterType="cto">
+        insert into album_cmt_comment1
+        values (0, #{pseq}, #{writer}, md5( #{password} ), #{content}, now());
+    </insert>
+
+    <select id="list" parameterType="cto" resultType="cto">
+        select seq, writer, content, wdate
+        from album_cmt_comment1
+        where pseq = #{pseq}
+    </select>
+</mapper>

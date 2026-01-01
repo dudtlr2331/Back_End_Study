@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#btn').on('click', function () {
+                $.ajax({
+                    url: './xml.do',
+                    type: 'get',
+                    dataType: 'xml',
+                    success: function (xmlData) {
+                        let html = '<table>';
+                        $(xmlData).find('emp').each(function () {
+                            html += '<tr>';
+                            html += '<td>' + $(this).find('empno').text() + '</td>';
+                            html += '<td>' + $(this).find('ename').text() + '</td>';
+                            html += '<td>' + $(this).find('job').text() + '</td>';
+                            html += '<td>' + $(this).find('mgr').text() + '</td>';
+                            html += '<td>' + $(this).find('hiredate').text() + '</td>';
+                            html += '<td>' + $(this).find('sal').text() + '</td>';
+                            html += '<td>' + $(this).find('comm').text() + '</td>';
+                            html += '<td>' + $(this).find('deptno').text() + '</td>';
+                            html += '</tr>';
+                        });
+                        html += '<table>';
+
+                        $('#result').html(html);
+                    },
+                    error: function (err) {
+                        console.log('[에러] ' + err.responseText);
+                    }
+                });
+            });
+
+            $('#btn2').on('click', function () {
+                $.ajax({
+                    url: './json.do',
+                    type: 'get',
+                    dataType: 'json',
+                    success: function (jsonData) {
+                        let html = '<table border="1">';
+                        html += '<tr><th>empno</th><th>ename</th><th>job</th><th>mgr</th><th>hiredate</th><th>sal</th><th>comm</th><th>deptno</th></tr>';
+
+                        $.each(jsonData, function(rowIndex, rowItem) {
+                            html += '<tr>';
+                            html += '<td>' + rowItem.empno + '</td>';
+                            html += '<td>' + rowItem.ename + '</td>';
+                            html += '<td>' + rowItem.job + '</td>';
+                            html += '<td>' + rowItem.mgr + '</td>';
+                            html += '<td>' + rowItem.hiredate + '</td>';
+                            html += '<td>' + rowItem.sal + '</td>';
+                            html += '<td>' + (rowItem.comm !== null ? rowItem.comm : '') + '</td>';
+                            html += '<td>' + rowItem.deptno + '</td>';
+                            html += '</tr>';
+                        });
+                        html += '</table>';
+
+                        $('#result').html(html);
+                    },
+                    error: function (err) {
+                        console.log('[에러] ' + err.responseText);
+                    }
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+
+<button id="btn" >XML 요청하기</button>
+<button id="btn2" >json 요청하기</button>
+
+<br/><hr/><br/>
+
+<div id="result"></div>
+
+</body>
+</html>

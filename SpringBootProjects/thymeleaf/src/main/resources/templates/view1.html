@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+view1.html
+<br/><hr/>
+<!--<div th:text="Thymeleaf">Hello World</div>-->
+<!--<div th:text="Hello Thymeleaf">Hello World</div>-->
+<!--<div th:utext="Hello Thymeleaf">Hello World</div>-->
+
+<div>data : <span th:text="${data}"></span></div>
+<div>data : <span th:utext="${data}"></span></div>
+
+<div>data : <span>[[${data}]]</span></div>
+
+</body>
+</html>

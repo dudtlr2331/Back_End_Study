@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#btn').on('click', function () {
+                $.ajax({
+                    url: './csv.do',
+                    type: 'get',
+                    dataType: 'text',
+                    success: function (textData) {
+                        console.log(textData)
+
+                        const rowdatas = textData.trim().split('\n');
+
+                        let html = '<table>';
+                        $.each(rowdatas, function(rowIndex, rowItem) {
+                            const coldatas = rowItem.split(',');
+                            html += '<tr>';
+                            html += '<td>' + coldatas[0] + '</td>';
+                            html += '<td>' + coldatas[1] + '</td>';
+                            html += '<td>' + coldatas[2] + '</td>';
+                            html += '</tr>';
+                        });
+                        html += '<table>';
+
+                        $('#result').html(html);
+                    },
+                    error: function (err) {
+                        console.log('[에러] ' + err.responseText);
+                    }
+                });
+            });
+
+            $('#btn2').on('click', function () {
+                $.ajax({
+                    url: './xml.do',
+                    type: 'get',
+                    dataType: 'xml',
+                    success: function (xmlData) {
+                        // console.log(xmlData)
+
+                        let html = '<table>';
+                        $(xmlData).find('dept').each(function () {
+                            html += '<tr>';
+                            html += '<td>' + $(this).find('deptno').text() + '</td>';
+                            html += '<td>' + $(this).find('dname').text() + '</td>';
+                            html += '<td>' + $(this).find('loc').text() + '</td>';
+                            html += '</tr>';
+                        });
+                        html += '<table>';
+
+                        $('#result').html(html);
+                    },
+                    error: function (err) {
+                        console.log('[에러] ' + err.responseText);
+                    }
+                });
+            });
+
+            $('#btn3').on('click', function () {
+                $.ajax({
+                    url: './json.do',
+                    type: 'get',
+                    dataType: 'json',
+                    success: function (jsonData) {
+                        let html = '<table border="1">';
+                        html += '<tr><th>deptno</th><th>dname</th><th>loc</th></tr>';
+
+                        $.each(jsonData, function(rowIndex, rowItem) {
+                            html += '<tr>';
+                            html += '<td>' + rowItem.deptno + '</td>';
+                            html += '<td>' + rowItem.dname + '</td>';
+                            html += '<td>' + rowItem.loc + '</td>';
+                            html += '</tr>';
+                        });
+                        html += '</table>';
+
+                        $('#result').html(html);
+                    },
+                    error: function (err) {
+                        console.log('[에러] ' + err.responseText);
+                    }
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+
+<button id="btn" >CSV 요청하기</button>
+<button id="btn2" >XML 요청하기</button>
+<button id="btn3" >json 요청하기</button>
+
+<br/><hr/><br/>
+
+<div id="result"></div>
+
+</body>
+</html>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace - 이름 영역(도메인) -->
+<mapper namespace="mybatis">
+    <!--
+        id : sql 고유이름
+        parameterType = sql의 파라미터 값
+        resultType - sql 반환값의 형식
+            1열 - 기본 자료형
+            다열 - to / map
+    -->
+    <select id="select" resultType="String">
+        select version() as version
+    </select>
+
+    <select id="selectone" resultType="map">
+        select deptno, dname, loc
+        from dept
+        where deptno = 10;
+    </select>
+
+    <select id="selectoneparam1" parameterType="string" resultType="map">
+        select deptno, dname, loc
+        from dept
+        where deptno = ${deptno}
+    </select>
+
+    <select id="selectoneparam2" parameterType="map" resultType="map">
+        select deptno, dname, loc
+        from dept
+        where deptno = #{deptno} and dname = #{dname}
+    </select>
+
+    <select id="selectlist" resultType="map">
+        select deptno, dname, loc
+        from dept
+    </select>
+</mapper>
