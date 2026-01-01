@@ -279,23 +279,25 @@ public class BoardDAO {
 			// 첨부 파일 없는 경우
 
 			if ( to.getFileName().equals("") ) {
-				sql = "update pds_adv_board1 set subject=?, mail=?, content=? where seq=? and password=md5(?)";
+				sql = "update pds_adv_board1 set kind= ?, subject=?, mail=?, content=? where seq=? and password=md5(?)";
 				pstmt = conn.prepareStatement( sql );
-				pstmt.setString( 1, to.getSubject() );
-				pstmt.setString( 2, to.getMail() );
-				pstmt.setString( 3, to.getContent() );
-				pstmt.setString( 4, to.getSeq() );
-				pstmt.setString( 5, to.getPassword() );
+				pstmt.setString( 1, to.getKind() );
+				pstmt.setString( 2, to.getSubject() );
+				pstmt.setString( 3, to.getMail() );
+				pstmt.setString( 4, to.getContent() );
+				pstmt.setString( 5, to.getSeq() );
+				pstmt.setString( 6, to.getPassword() );
 			} else {
-				sql = "update pds_adv_board1 set subject=?, mail=?, content=?, filename=?, filesize=? where seq=? and password=md5(?)";
+				sql = "update pds_adv_board1 set kind= ?, subject=?, mail=?, content=?, filename=?, filesize=? where seq=? and password=md5(?)";
 				pstmt = conn.prepareStatement( sql );
-				pstmt.setString( 1, to.getSubject() );
-				pstmt.setString( 2, to.getMail() );
-				pstmt.setString( 3, to.getContent() );
-				pstmt.setString( 4, to.getFileName() );
-				pstmt.setInt( 5, to.getFileSize() );
-				pstmt.setString( 6, to.getSeq() );
-				pstmt.setString( 7, to.getPassword() );
+				pstmt.setString( 1, to.getKind() );
+				pstmt.setString( 2, to.getSubject() );
+				pstmt.setString( 3, to.getMail() );
+				pstmt.setString( 4, to.getContent() );
+				pstmt.setString( 5, to.getFileName() );
+				pstmt.setInt( 6, to.getFileSize() );
+				pstmt.setString( 7, to.getSeq() );
+				pstmt.setString( 8, to.getPassword() );
 			}
 
 			int result = pstmt.executeUpdate();

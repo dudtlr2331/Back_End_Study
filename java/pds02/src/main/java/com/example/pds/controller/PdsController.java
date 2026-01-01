@@ -149,6 +149,7 @@ public class PdsController {
 
 		BoardTO to = new BoardTO();
 		to.setSeq( request.getParameter( "seq" ) );
+		to.setKind(request.getParameter("kind" ) );
 		to.setSubject( request.getParameter( "subject" ) );
 		to.setMail( "" );
 		if ( !request.getParameter( "mail1" ).equals( "" ) && !request.getParameter( "mail2" ).equals( "" ) ) {
