@@ -1,3 +1,5 @@
+package algorithm.src.main.java.Backjoon;
+
 public class backjoon11399 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);

@@ -1,3 +1,5 @@
+package algorithm.src.main.java.Backjoon;
+
 import java.util.*;
 
 public class Backjoon2309 {

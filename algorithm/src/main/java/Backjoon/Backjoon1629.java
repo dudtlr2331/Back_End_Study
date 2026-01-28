@@ -1,3 +1,5 @@
+package algorithm.src.main.java.Backjoon;
+
 import java.util.Scanner;
 
 public class Backjoon1629 {

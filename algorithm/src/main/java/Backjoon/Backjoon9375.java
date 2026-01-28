@@ -1,3 +1,5 @@
+package algorithm.src.main.java.Backjoon;
+
 public class Backjoon9375 {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
